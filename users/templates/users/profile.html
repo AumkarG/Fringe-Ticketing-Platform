@@ -1,0 +1,15 @@
+
+
+{% extends "event/base.html" %}
+{% block content %}
+<div class="jumbotron text-center" style="background-color: purple;color:white">
+  <h3>My Profile</h3>
+</div>
+
+
+<div>
+    <div style="text-align: center">  USERNAME :  {{ user.username}}             EMAIL : {{ user.email}} 
+    </div>
+</div>
+
+{%endblock content%}

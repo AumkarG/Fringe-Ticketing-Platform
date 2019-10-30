@@ -18,3 +18,11 @@ def browse(request):
     }
     return render(request,'event/browse.html',context)
 
+
+    
+def eventdetail(request):
+    context = {
+        'event': Event.objects.all()
+    }
+    return render(request,'event/eventdetail.html',context)
+

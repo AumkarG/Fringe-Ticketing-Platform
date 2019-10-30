@@ -20,7 +20,8 @@
 {% block content %}
     {% for event in events %}
     <div class="gallery">
-      <img id="1"  src='{{ event.model_pic.url }}'>
+        <a href="{% url 'eventdetail' %}"><img id="1"  src='{{ event.model_pic.url }}'></a>
+      
       <div class="desc">
           {{event.name}}
         </div>

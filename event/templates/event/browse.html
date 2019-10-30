@@ -1,15 +1,29 @@
 {% extends "event/base.html" %}
+{% block style%}
+<style>
+    div.gallery{
+        margin : 5px;
+        border:2px solid lightgray;
+        width: 235px;
+        float:left;
+      }
+      div.gallery:hover{
+        border:2px solid black;
+
+      }
+      div.gallery img{
+        width:100%;
+        height:250px;
+      }
+ </style>  
+{% endblock style %}
 {% block content %}
     {% for event in events %}
-        <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ event.hoster }}</a>
-              <small class="text-muted">{{ event.date_created }}</small>
-            </div>
-            <h2><a class="article-title" href="#">{{ event.name }}</a></h2>
-            <p class="article-content">{{ event.description }}</p>
-          </div>
-        </article>
+    <div class="gallery">
+      <img id="1"  src='{{ event.model_pic.url }}'>
+      <div class="desc">
+          {{event.name}}
+        </div>
+    </div>
     {% endfor %}
 {% endblock content %}

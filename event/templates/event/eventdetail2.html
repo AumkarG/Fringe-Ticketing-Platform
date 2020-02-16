@@ -1,0 +1,141 @@
+
+
+
+{% extends "event/base.html" %}
+{% block style %}
+<style>
+  .fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-instagram {
+  background: #d6249f;
+background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);;
+  color: white;
+}
+			
+
+.row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+    flex-wrap: wrap;
+  }
+  .row > [class*='col-sm'] {
+    display: flex;
+    flex-direction: column;
+  }
+  .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+
+
+  </style>
+{% endblock style %}
+{% block content %}
+<div class="container">
+  <div class="row" >
+    <div class="col-sm" style="background-color: black;">
+      One of three columns
+    </div>
+    <div class="col-sm" style="background-color: blueviolet;">
+      One of three columns
+    </div>
+    <div class="col-sm" style="background-color: chartreuse;">
+      One of three columns
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+      
+    <div class="row">
+      <div class="col-sm-4" style="background-color:#f0f5f5;text-align: center">
+        <h1 style="font-family:'Courier New'">  {{event.name}}</h1>
+          <br>
+          <br>
+
+          <img id="1"  src='{{ event.model_pic.url }}' style="height: 400px;width: 400px;">
+      </div>
+      <div class="col-sm-4" style="background-color:purple;color: white; display: flex;align-items: center;justify-content: center;">
+        <div style='text-align: center;font-family: cursive;font-size: 15px'>
+        {{event.description}}
+        </div>
+      </div>
+      <div class="col-sm-4" style="background-color:#f0f5f5;display: flex;align-items: center;justify-content: center;">
+       <div style="position: absolute;top: 0px;right: 0px;"> 
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-instagram"></a>
+        </div>
+        <div>
+       <br>
+       <br>
+              {%if sh == "n" %}
+              <a href="{% url 'shortlist' event.id 's'%}"><button class="button button2">SHORTLIST</button></a>
+              {%else%}
+              <a href="{% url 'shortlist' event.id 'n'%}"><button class="button button2">REMOVE FROM SHORTLIST?</button></a>
+              {%endif%}
+              <br>
+              <button class="button button1">REGISTER </button> 
+        </div>
+      </div>
+    </div>
+</div>
+  
+       
+
+{% endblock content %}

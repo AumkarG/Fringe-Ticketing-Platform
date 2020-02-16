@@ -1,8 +1,13 @@
 {% extends "event/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+{% if messages %}
+    {% for message in messages %}
+    <script>alert('{{ message }}')</script>
+    {% endfor %}
+{% endif %}
 <div class="content-section container">
-    <form method="POST" enctype='multipart/form-data'>
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Enter the details of your event</legend>

@@ -15,9 +15,11 @@ class Event(models.Model):
     location=models.TextField(max_length=50, choices=COLOR_CHOICES,default="South Bombay")
     date_created = models.DateTimeField(default=timezone.now)
     hoster = models.ForeignKey(User, on_delete=models.CASCADE)
-    model_pic = models.ImageField(upload_to = 'images/', default="images/")
-    verify = models.FileField(upload_to = 'proof/', default="proof/trek.png")     
-
+    model_pic = models.ImageField(upload_to = 'images/')
+    verify = models.FileField(upload_to = 'proof/', default="proof/trek.png")    
+    verified=models.BooleanField(default=False) 
+    latitude=models.DecimalField(max_digits=15,decimal_places=10)
+    longitude=models.DecimalField(max_digits=15,decimal_places=10)
 
     def __str__(self):
         return self.name

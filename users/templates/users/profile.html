@@ -1,15 +1,30 @@
 
 
 {% extends "event/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
+{% if messages %}
+    {% for message in messages %}
+    <script>alert('{{ message }}')</script>
+    {% endfor %}
+{% endif %}
 <div class="jumbotron text-center" style="background-color: purple;color:white">
   <h3>My Profile</h3>
 </div>
-
-
-<div>
-    <div style="text-align: center">  USERNAME :  {{ user.username}}             EMAIL : {{ user.email}} 
+<div class="container">
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Profile Info</legend>  <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Update</button>
     </div>
+      {{ u_form|crispy }}
+      {{ p_form|crispy}}
+  </fieldset>
+ 
+</form>
 </div>
+
+    
 
 {%endblock content%}
